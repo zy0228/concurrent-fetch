@@ -15,6 +15,12 @@ export function concurrencyFetch(iterators, handler, maxNum = 5, callback) {
   let count = 0
 
   function _request() {
+    /**
+     * if 断点存在
+     * id++
+     * count++;
+     * continue;
+     */
     while (id < len && maxNum > 0) {
       maxNum--
       handler(iterators[id++]).finally(() => {
