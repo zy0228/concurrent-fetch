@@ -26,6 +26,7 @@ export default {
       const file = e.target.files[0]
       const { size, name } = file
       const maxReqNum = 5
+      const blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice
 
       let chunks = []
       let position = 0
@@ -39,7 +40,7 @@ export default {
       } else {
         while (true) {
           length += CHUNK_SIZE
-          const blob = file.slice(position, length)
+          const blob = blobSlice.call(file, position, length)
           position += CHUNK_SIZE
 
           if (!blob.size) {
