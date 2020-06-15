@@ -26,7 +26,10 @@ export default {
       const file = e.target.files[0]
       const { size, name } = file
       const maxReqNum = 5
-      const blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice
+      const blobSlice =
+        File.prototype.slice ||
+        File.prototype.mozSlice ||
+        File.prototype.webkitSlice
 
       let chunks = []
       let position = 0
